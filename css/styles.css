@@ -169,6 +169,13 @@ img { max-width: 100%; display: block; }
   align-items: center;
   padding-block: 5rem;
 }
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
 .hero-badge {
   display: inline-flex;
   align-items: center;
