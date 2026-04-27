@@ -1,5 +1,5 @@
 /* =========================================================
-   SwiftBag Logistics — Main Script
+   Ethical Compass — Main Script
    ========================================================= */
 
 (function () {
@@ -16,17 +16,20 @@
   /* ---------- Mobile nav toggle ---------- */
   const hamburger = document.querySelector('.hamburger');
   const navLinks  = document.querySelector('.nav-links');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  // Close menu when a link is clicked
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
     });
-  });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   /* ---------- Smooth-scroll for anchor links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -40,26 +43,10 @@
     });
   });
 
-  /* ---------- Animated bar chart (Why Us section) ---------- */
-  const bars = document.querySelectorAll('.chart-bar[data-width]');
-  const animateBars = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        bar.style.width = bar.dataset.width;
-        observer.unobserve(bar);
-      }
-    });
-  };
-  const barObserver = new IntersectionObserver(animateBars, { threshold: 0.3 });
-  bars.forEach(bar => {
-    bar.style.width = '0';
-    bar.style.transition = 'width 1.1s cubic-bezier(.4,0,.2,1)';
-    barObserver.observe(bar);
-  });
-
   /* ---------- Fade-in on scroll ---------- */
-  const fadeEls = document.querySelectorAll('.service-card, .pricing-card, .testimonial-card, .feature-item');
+  const fadeEls = document.querySelectorAll(
+    '.service-card, .pricing-card, .feature-item, .governance-card, .impact-number, .personnel-card, .testimonial-card'
+  );
   fadeEls.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -78,62 +65,115 @@
   }, { threshold: 0.1 });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  /* ---------- Luggage tracker (demo) ---------- */
-  const trackBtn   = document.getElementById('trackBtn');
-  const trackInput = document.getElementById('trackInput');
-  const trackResult = document.getElementById('trackResult');
-  const DEMO_IDS = {
-    'SB100042': '✅ Delivered — London Heathrow T2 baggage claim, 14:32',
-    'SB100099': '🔄 In Transit — Departed Dubai International, ETA 6 hrs',
-    'SB100007': '📦 Checked In — New York JFK, handling bay 4',
-  };
-  trackBtn.addEventListener('click', () => {
-    const id = trackInput.value.trim().toUpperCase();
-    if (!id) {
-      trackResult.textContent = 'Please enter a tracking ID.';
-      return;
-    }
-    trackResult.textContent = DEMO_IDS[id]
-      ? DEMO_IDS[id]
-      : '⚠️ ID not found. Try SB100042, SB100099, or SB100007.';
+  /* ---------- FAQ / Benefit Accordion ---------- */
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const content  = btn.nextElementSibling;
+      // Collapse all siblings first
+      const allItems = btn.closest('.faq-accordions').querySelectorAll('.faq-trigger');
+      allItems.forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.hidden = true;
+      });
+      // Toggle clicked
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        content.hidden = false;
+      }
+    });
   });
-  trackInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') trackBtn.click();
+
+  /* ---------- Bio Accordion ---------- */
+  document.querySelectorAll('.bio-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const content  = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', String(!expanded));
+      content.hidden = expanded;
+    });
   });
+
+  /* ---------- ROI Calculator ---------- */
+  const inputRegulatory = document.getElementById('input-regulatory');
+  const inputBrand      = document.getElementById('input-brand');
+  const inputComplexity = document.getElementById('input-complexity');
+  const valRegulatory   = document.getElementById('val-regulatory');
+  const valBrand        = document.getElementById('val-brand');
+  const valComplexity   = document.getElementById('val-complexity');
+  const roiDisplay      = document.getElementById('roi-display');
+
+  const complexityLabels = ['Low', 'Moderate', 'High', 'Very High', 'Critical'];
+
+  function updateROI() {
+    const reg     = parseInt(inputRegulatory.value, 10);
+    const brand   = parseInt(inputBrand.value, 10);
+    const complex = parseInt(inputComplexity.value, 10);
+
+    const BRAND_SCALE_FACTOR = 1000; // slider value is in thousands (R thousands)
+
+    valRegulatory.textContent = reg;
+    valBrand.textContent      = (brand / BRAND_SCALE_FACTOR).toFixed(brand % BRAND_SCALE_FACTOR === 0 ? 0 : 1);
+    valComplexity.textContent = complexityLabels[complex - 1];
+
+    // Formula: higher risk + higher brand value + higher complexity = higher ROI multiple
+    const totalRisk = reg + brand / 100;
+    const multiplier = 1 + (complex - 1) * 0.5;
+    const roi = Math.round((totalRisk / 150) * multiplier + 4);
+    roiDisplay.textContent = Math.min(roi, 40) + 'x';
+  }
+
+  if (inputRegulatory && inputBrand && inputComplexity) {
+    inputRegulatory.addEventListener('input', updateROI);
+    inputBrand.addEventListener('input', updateROI);
+    inputComplexity.addEventListener('input', updateROI);
+    updateROI();
+  }
 
   /* ---------- Contact form validation ---------- */
   const form       = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    formStatus.className = 'form-status';
 
-    const name    = form.querySelector('#name').value.trim();
-    const email   = form.querySelector('#email').value.trim();
-    const message = form.querySelector('#message').value.trim();
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      formStatus.className = 'form-status';
 
-    if (!name || !email || !message) {
-      formStatus.textContent = 'Please fill in all required fields.';
-      formStatus.className = 'form-status error';
-      return;
-    }
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRe.test(email)) {
-      formStatus.textContent = 'Please enter a valid email address.';
-      formStatus.className = 'form-status error';
-      return;
-    }
+      const name    = form.querySelector('#name').value.trim();
+      const email   = form.querySelector('#email').value.trim();
+      const message = form.querySelector('#message').value.trim();
 
-    // Simulate async submission
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    setTimeout(() => {
-      form.reset();
-      formStatus.textContent = '🎉 Message sent! We\'ll be in touch within 24 hours.';
-      formStatus.className = 'form-status success';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    }, 1400);
-  });
+      if (!name || !email || !message) {
+        formStatus.textContent = 'Please fill in all required fields.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        formStatus.textContent = 'Please enter a valid email address.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      setTimeout(() => {
+        form.reset();
+        formStatus.textContent = '✅ Message sent! Our governance team will be in touch within 24 hours.';
+        formStatus.className = 'form-status success';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }, 1400);
+    });
+  }
+
+  /* ---------- Framework strip pause on hover ---------- */
+  const track = document.querySelector('.frameworks-track');
+  if (track) {
+    const wrapper = track.parentElement;
+    wrapper.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
+    wrapper.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+  }
+
 })();
