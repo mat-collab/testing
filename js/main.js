@@ -133,6 +133,7 @@
     valMarkup.textContent = markup;
 
     const monthly = Math.round(count * basePrice[size] * (1 + markup / 100));
+    // \u00a0 is a non-breaking space so "R" and the number never wrap onto separate lines
     roiDisplay.textContent = 'R\u00a0' + monthly.toLocaleString('en-ZA') + '/mo';
   }
 
