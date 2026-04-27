@@ -1,5 +1,5 @@
 /* =========================================================
-   Ethical Compass — Main Script
+   CivicBridge — Main Script
    ========================================================= */
 
 (function () {
@@ -45,7 +45,8 @@
 
   /* ---------- Fade-in on scroll ---------- */
   const fadeEls = document.querySelectorAll(
-    '.service-card, .pricing-card, .feature-item, .governance-card, .impact-number, .personnel-card, .testimonial-card'
+    '.service-card, .pricing-card, .feature-item, .governance-card, ' +
+    '.impact-number, .reseller-card, .demo-svc-card'
   );
   fadeEls.forEach(el => {
     el.style.opacity = '0';
@@ -71,8 +72,7 @@
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       const content  = btn.nextElementSibling;
       // Collapse all siblings first
-      const allItems = btn.closest('.faq-accordions').querySelectorAll('.faq-trigger');
-      allItems.forEach(b => {
+      btn.closest('.faq-accordions').querySelectorAll('.faq-trigger').forEach(b => {
         b.setAttribute('aria-expanded', 'false');
         b.nextElementSibling.hidden = true;
       });
@@ -84,50 +84,63 @@
     });
   });
 
-  /* ---------- Bio Accordion ---------- */
-  document.querySelectorAll('.bio-trigger').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const content  = btn.nextElementSibling;
-      btn.setAttribute('aria-expanded', String(!expanded));
-      content.hidden = expanded;
+  /* ---------- Demo Tabs ---------- */
+  const demoTabs = document.querySelectorAll('.demo-tab');
+  if (demoTabs.length) {
+    demoTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panelId = 'tab-' + tab.dataset.tab;
+        // Update tab buttons
+        demoTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        // Update panels
+        document.querySelectorAll('.demo-panel').forEach(panel => {
+          panel.classList.remove('active');
+          panel.hidden = true;
+        });
+        const activePanel = document.getElementById(panelId);
+        if (activePanel) {
+          activePanel.classList.add('active');
+          activePanel.hidden = false;
+        }
+      });
     });
-  });
-
-  /* ---------- ROI Calculator ---------- */
-  const inputRegulatory = document.getElementById('input-regulatory');
-  const inputBrand      = document.getElementById('input-brand');
-  const inputComplexity = document.getElementById('input-complexity');
-  const valRegulatory   = document.getElementById('val-regulatory');
-  const valBrand        = document.getElementById('val-brand');
-  const valComplexity   = document.getElementById('val-complexity');
-  const roiDisplay      = document.getElementById('roi-display');
-
-  const complexityLabels = ['Low', 'Moderate', 'High', 'Very High', 'Critical'];
-
-  function updateROI() {
-    const reg     = parseInt(inputRegulatory.value, 10);
-    const brand   = parseInt(inputBrand.value, 10);
-    const complex = parseInt(inputComplexity.value, 10);
-
-    const BRAND_SCALE_FACTOR = 1000; // slider value is in thousands (R thousands)
-
-    valRegulatory.textContent = reg;
-    valBrand.textContent      = (brand / BRAND_SCALE_FACTOR).toFixed(brand % BRAND_SCALE_FACTOR === 0 ? 0 : 1);
-    valComplexity.textContent = complexityLabels[complex - 1];
-
-    // Formula: higher risk + higher brand value + higher complexity = higher ROI multiple
-    const totalRisk = reg + brand / 100;
-    const multiplier = 1 + (complex - 1) * 0.5;
-    const roi = Math.round((totalRisk / 150) * multiplier + 4);
-    roiDisplay.textContent = Math.min(roi, 40) + 'x';
   }
 
-  if (inputRegulatory && inputBrand && inputComplexity) {
-    inputRegulatory.addEventListener('input', updateROI);
-    inputBrand.addEventListener('input', updateROI);
-    inputComplexity.addEventListener('input', updateROI);
-    updateROI();
+  /* ---------- Revenue Calculator ---------- */
+  const inputMunis  = document.getElementById('input-munis');
+  const inputSize   = document.getElementById('input-size');
+  const inputMarkup = document.getElementById('input-markup');
+  const valMunis    = document.getElementById('val-munis');
+  const valSize     = document.getElementById('val-size');
+  const valMarkup   = document.getElementById('val-markup');
+  const roiDisplay  = document.getElementById('roi-display');
+
+  const sizeLabels = ['Small', 'Medium', 'Large'];
+  const basePrice  = [499, 699, 999]; // R per municipality per month
+
+  function updateCalc() {
+    const count  = parseInt(inputMunis.value, 10);
+    const size   = parseInt(inputSize.value, 10) - 1;
+    const markup = parseInt(inputMarkup.value, 10);
+
+    valMunis.textContent  = count;
+    valSize.textContent   = sizeLabels[size];
+    valMarkup.textContent = markup;
+
+    const monthly = Math.round(count * basePrice[size] * (1 + markup / 100));
+    roiDisplay.textContent = 'R\u00a0' + monthly.toLocaleString('en-ZA') + '/mo';
+  }
+
+  if (inputMunis && inputSize && inputMarkup) {
+    inputMunis.addEventListener('input', updateCalc);
+    inputSize.addEventListener('input', updateCalc);
+    inputMarkup.addEventListener('input', updateCalc);
+    updateCalc();
   }
 
   /* ---------- Contact form validation ---------- */
@@ -138,12 +151,14 @@
     form.addEventListener('submit', e => {
       e.preventDefault();
       formStatus.className = 'form-status';
+      formStatus.textContent = '';
 
+      const orgName = form.querySelector('#org-name').value.trim();
       const name    = form.querySelector('#name').value.trim();
       const email   = form.querySelector('#email').value.trim();
       const message = form.querySelector('#message').value.trim();
 
-      if (!name || !email || !message) {
+      if (!orgName || !name || !email || !message) {
         formStatus.textContent = 'Please fill in all required fields.';
         formStatus.className = 'form-status error';
         return;
@@ -160,7 +175,7 @@
       submitBtn.textContent = 'Sending…';
       setTimeout(() => {
         form.reset();
-        formStatus.textContent = '✅ Message sent! Our governance team will be in touch within 24 hours.';
+        formStatus.textContent = '✅ Message sent! Our team will be in touch within 24 hours.';
         formStatus.className = 'form-status success';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
@@ -168,7 +183,7 @@
     });
   }
 
-  /* ---------- Framework strip pause on hover ---------- */
+  /* ---------- Framework strip: pause on hover ---------- */
   const track = document.querySelector('.frameworks-track');
   if (track) {
     const wrapper = track.parentElement;
