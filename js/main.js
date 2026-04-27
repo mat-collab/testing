@@ -103,16 +103,18 @@
   const valComplexity   = document.getElementById('val-complexity');
   const roiDisplay      = document.getElementById('roi-display');
 
-  const complexityLabels = ['', 'Low', 'Moderate', 'High', 'Very High', 'Critical'];
+  const complexityLabels = ['Low', 'Moderate', 'High', 'Very High', 'Critical'];
 
   function updateROI() {
     const reg     = parseInt(inputRegulatory.value, 10);
     const brand   = parseInt(inputBrand.value, 10);
     const complex = parseInt(inputComplexity.value, 10);
 
+    const BRAND_SCALE_FACTOR = 1000; // slider value is in thousands (R thousands)
+
     valRegulatory.textContent = reg;
-    valBrand.textContent      = (brand / 1000).toFixed(brand % 1000 === 0 ? 0 : 1);
-    valComplexity.textContent = complexityLabels[complex];
+    valBrand.textContent      = (brand / BRAND_SCALE_FACTOR).toFixed(brand % BRAND_SCALE_FACTOR === 0 ? 0 : 1);
+    valComplexity.textContent = complexityLabels[complex - 1];
 
     // Formula: higher risk + higher brand value + higher complexity = higher ROI multiple
     const totalRisk = reg + brand / 100;
