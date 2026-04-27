@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SwiftBag Logistics — Premium luggage handling, storage, and delivery services for airlines, hotels, and travelers worldwide." />
+  <title>SwiftBag Logistics | Premium Luggage Handling Services</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧳</text></svg>" />
+</head>
+<body>
+
+  <!-- ========================================================
+       NAVIGATION
+  ======================================================== -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo" aria-label="SwiftBag Logistics home">
+        <!-- Luggage icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="5" y="7" width="14" height="13" rx="2"/>
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          <line x1="12" y1="12" x2="12" y2="15"/>
+          <line x1="10" y1="13.5" x2="14" y2="13.5"/>
+        </svg>
+        Swift<span>Bag</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary">Get a Quote</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       HERO
+  ======================================================== -->
+  <section id="hero" aria-label="Hero">
+    <div class="container hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          Trusted by 500+ airports &amp; hotels
+        </div>
+
+        <h1 class="hero-title">
+          Luggage Handling<br/>
+          <span>Without the Hassle</span>
+        </h1>
+        <p class="hero-desc">
+          SwiftBag Logistics delivers end-to-end luggage management — from curbside check-in
+          to final delivery — so your passengers travel light and arrive happy.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#pricing" class="btn btn-primary">View Plans</a>
+          <a href="#contact" class="btn btn-secondary">Talk to Sales</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>99.8%</strong>
+            <span>On-time delivery rate</span>
+          </div>
+          <div class="stat-item">
+            <strong>2M+</strong>
+            <span>Bags handled yearly</span>
+          </div>
+          <div class="stat-item">
+            <strong>180+</strong>
+            <span>Airports served</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: tracker card -->
+      <div class="hero-visual" aria-label="Luggage tracker demo">
+        <div class="hero-card">
+          <div class="hero-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3>Track Your Luggage</h3>
+          <p>Enter your SwiftBag tracking ID to see real-time status.</p>
+          <div class="track-form">
+            <input type="text" id="trackInput" placeholder="e.g. SB100042" aria-label="Tracking ID" maxlength="12" />
+            <button id="trackBtn" aria-label="Track">Track</button>
+          </div>
+          <p class="track-result" id="trackResult" aria-live="polite"></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       TRUSTED BY
+  ======================================================== -->
+  <section id="trusted" aria-label="Trusted by">
+    <div class="container">
+      <div class="trusted-inner">
+        <span class="trusted-label">Trusted by</span>
+        <div class="trusted-logos" role="list">
+          <span role="listitem">AeroLink Airlines</span>
+          <span role="listitem">Grand Meridian Hotels</span>
+          <span role="listitem">BlueSky Resorts</span>
+          <span role="listitem">Conexa Cargo</span>
+          <span role="listitem">PolarAir Express</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SERVICES
+  ======================================================== -->
+  <section id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <header class="services-header">
+        <span class="section-label">What We Do</span>
+        <h2 id="services-heading" class="section-title">Everything Your Luggage Needs</h2>
+        <p class="section-sub">
+          Whether you're running an international airport or a boutique hotel,
+          we have a service tier built for your operation.
+        </p>
+      </header>
+
+      <div class="services-grid">
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#e0f0ff">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1356a2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+          </div>
+          <h3>Curbside Check-In</h3>
+          <p>Guests drop off bags at the entrance. Our agents tag, weigh, and deliver them directly to the aircraft or hotel room — no queuing required.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#fff4e0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12H3l9-9 9 9h-2"/>
+              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+            </svg>
+          </div>
+          <h3>Door-to-Door Delivery</h3>
+          <p>We collect luggage from home and deliver it to the destination — arriving before your guest does, every time.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#e0f7e9">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Secure Storage</h3>
+          <p>Climate-controlled, CCTV-monitored storage facilities at major hubs. Short-term lockers to long-term warehouse solutions.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#f0e8ff">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3>Real-Time Tracking</h3>
+          <p>Every bag gets a smart RFID tag and GPS milestone updates via our app or your existing PMS integration.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#ffe0e0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Hotel Concierge Program</h3>
+          <p>White-label luggage handling under your hotel brand — from check-in to in-room delivery and express checkout pickups.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon" style="background:#e0f7ff">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13" rx="2"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Fleet Transfer</h3>
+          <p>Inter-terminal and inter-hotel transfers handled by our dedicated fleet of tracked, insured vehicles operating 24/7.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHY US
+  ======================================================== -->
+  <section id="why" aria-labelledby="why-heading">
+    <div class="container why-grid">
+
+      <div>
+        <span class="section-label">Why SwiftBag</span>
+        <h2 id="why-heading" class="section-title">The Smarter Way to Move Luggage</h2>
+        <p class="section-sub">
+          We combine cutting-edge logistics technology with a team of trained handling professionals
+          to deliver measurable results for your operation.
+        </p>
+
+        <div class="why-features">
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>IATA &amp; ICAO Certified</h4>
+              <p>All handlers are trained to international aviation safety standards, fully bonded and insured.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>API-First Integration</h4>
+              <p>Plug SwiftBag into your DCS, PMS, or booking platform in hours with our REST API and ready-made connectors.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>24/7 Operations Center</h4>
+              <p>Our global NOC monitors every bag around the clock. Issues are escalated and resolved before guests notice.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Sustainability Commitment</h4>
+              <p>Carbon-neutral operations since 2024. Electric fleet expansion underway across all Tier-1 hubs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance chart -->
+      <div class="why-visual" aria-label="Performance statistics">
+        <p class="why-visual-title">2025 Performance Metrics</p>
+        <div class="why-chart" role="list">
+          <div class="chart-row" role="listitem">
+            <div class="chart-label"><span>On-Time Delivery</span><span>99.8%</span></div>
+            <div class="chart-bar-bg"><div class="chart-bar" data-width="99.8%" aria-label="99.8% on-time delivery"></div></div>
+          </div>
+          <div class="chart-row" role="listitem">
+            <div class="chart-label"><span>Customer Satisfaction</span><span>97.2%</span></div>
+            <div class="chart-bar-bg"><div class="chart-bar" data-width="97.2%" aria-label="97.2% customer satisfaction"></div></div>
+          </div>
+          <div class="chart-row" role="listitem">
+            <div class="chart-label"><span>Damage-Free Rate</span><span>99.5%</span></div>
+            <div class="chart-bar-bg"><div class="chart-bar" data-width="99.5%" aria-label="99.5% damage-free rate"></div></div>
+          </div>
+          <div class="chart-row" role="listitem">
+            <div class="chart-label"><span>SLA Compliance</span><span>98.6%</span></div>
+            <div class="chart-bar-bg"><div class="chart-bar" data-width="98.6%" aria-label="98.6% SLA compliance"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PRICING
+  ======================================================== -->
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Pricing</span>
+        <h2 id="pricing-heading" class="section-title">Simple, Transparent Plans</h2>
+        <p class="section-sub">No hidden fees. Scale up or down as your operation grows.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Starter -->
+        <div class="pricing-card">
+          <p class="plan-name">Starter</p>
+          <p class="plan-price"><sup>$</sup>499</p>
+          <p class="plan-period">per month</p>
+          <p class="plan-desc">Perfect for boutique hotels and small regional airports.</p>
+          <ul class="plan-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Up to 500 bags / month
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              RFID tagging &amp; basic tracking
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Email &amp; SMS notifications
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Business hours support
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Standard SLA (4-hr response)
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center">Get Started</a>
+        </div>
+
+        <!-- Professional (featured) -->
+        <div class="pricing-card featured">
+          <span class="popular-badge">Most Popular</span>
+          <p class="plan-name">Professional</p>
+          <p class="plan-price"><sup>$</sup>1,499</p>
+          <p class="plan-period">per month</p>
+          <p class="plan-desc">Ideal for mid-size airports, hotel chains, and cruise terminals.</p>
+          <ul class="plan-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Up to 5,000 bags / month
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Real-time GPS tracking
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              White-label passenger app
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              API integration included
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              24/7 priority support
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              1-hr SLA response time
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center">Get Started</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card">
+          <p class="plan-name">Enterprise</p>
+          <p class="plan-price" style="font-size:2rem">Custom</p>
+          <p class="plan-period">tailored to your volume</p>
+          <p class="plan-desc">For major international airports, airlines, and global hotel brands.</p>
+          <ul class="plan-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Unlimited bags
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Multi-hub coordination
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Dedicated account manager
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom SLA &amp; insurance
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              On-site training &amp; onboarding
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              15-min SLA response time
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       TESTIMONIALS
+  ======================================================== -->
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Testimonials</span>
+        <h2 id="testimonials-heading" class="section-title">What Our Clients Say</h2>
+        <p class="section-sub">From regional airports to global hotel chains, here's why they chose SwiftBag.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <blockquote>"SwiftBag cut our baggage handling complaints by 80% in the first quarter. The real-time tracking alone transformed how our guests experience check-in."</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">SH</div>
+            <div>
+              <p class="reviewer-name">Sarah Halvorsen</p>
+              <p class="reviewer-role">Director of Operations — Grand Meridian Hotels</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <blockquote>"The API integration was painless. We were live within two days. SwiftBag's 24/7 ops team is genuinely the best vendor support we have ever worked with."</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">MC</div>
+            <div>
+              <p class="reviewer-name">Marcus Chen</p>
+              <p class="reviewer-role">CTO — AeroLink Airlines</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <blockquote>"We handle 3 million passengers a year. SwiftBag scaled with us effortlessly, and the carbon-neutral fleet aligns perfectly with our sustainability goals."</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">LP</div>
+            <div>
+              <p class="reviewer-name">Lena Petrov</p>
+              <p class="reviewer-role">VP Ground Services — Conexa Cargo</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CTA BANNER
+  ======================================================== -->
+  <section id="cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <span class="section-label">Ready to Get Started?</span>
+      <h2 id="cta-heading" class="section-title">Your Passengers Deserve Better Luggage Handling</h2>
+      <p class="section-sub">Join 500+ partners who trust SwiftBag to move millions of bags safely, on time, every time.</p>
+      <div class="cta-actions">
+        <a href="#pricing" class="btn btn-primary">View Pricing</a>
+        <a href="#contact" class="btn btn-secondary">Book a Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CONTACT
+  ======================================================== -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="container contact-grid">
+
+      <div>
+        <span class="section-label">Get in Touch</span>
+        <h2 id="contact-heading" class="section-title">Let's Talk Logistics</h2>
+        <p class="section-sub">
+          Fill in the form and a member of our sales team will reach out within 24 hours.
+          Enterprise clients get a dedicated response within 2 hours.
+        </p>
+
+        <div class="contact-info" style="margin-top:2rem">
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.91 5.91l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <p>+1 (800) 794-2224</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>sales@swiftbag.io</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Headquarters</h4>
+              <p>1 Logistics Plaza, Suite 800<br/>Amsterdam, Netherlands</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Work Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Acme Airlines" autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interest</label>
+            <select id="service" name="service">
+              <option value="">— Select a service —</option>
+              <option value="curbside">Curbside Check-In</option>
+              <option value="door-to-door">Door-to-Door Delivery</option>
+              <option value="storage">Secure Storage</option>
+              <option value="tracking">Real-Time Tracking</option>
+              <option value="hotel">Hotel Concierge Program</option>
+              <option value="fleet">Fleet Transfer</option>
+              <option value="enterprise">Enterprise / Custom</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" placeholder="Tell us about your operation and what you need…" required></textarea>
+        </div>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+        <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+  ======================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="SwiftBag Logistics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="7" width="14" height="13" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="15"/>
+              <line x1="10" y1="13.5" x2="14" y2="13.5"/>
+            </svg>
+            Swift<span>Bag</span>
+          </a>
+          <p>Premium luggage handling for airports, airlines, and hospitality — delivered with precision, care, and technology.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Curbside Check-In</a></li>
+            <li><a href="#services">Door-to-Door Delivery</a></li>
+            <li><a href="#services">Secure Storage</a></li>
+            <li><a href="#services">Real-Time Tracking</a></li>
+            <li><a href="#services">Hotel Concierge</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why">About Us</a></li>
+            <li><a href="#testimonials">Case Studies</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Careers</a></li>
+            <li><a href="#contact">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">SLA Agreement</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SwiftBag Logistics Ltd. All rights reserved.</p>
+        <div class="social-links" aria-label="Social media links">
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
